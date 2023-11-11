@@ -1,0 +1,12 @@
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\bin\Debug\net6.0\Commons.deps.json
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\bin\Debug\net6.0\Commons.dll
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\bin\Debug\net6.0\Commons.pdb
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\Commons.csproj.AssemblyReference.cache
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\Commons.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\Commons.AssemblyInfoInputs.cache
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\Commons.AssemblyInfo.cs
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\Commons.csproj.CoreCompileInputs.cache
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\Commons.dll
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\refint\Commons.dll
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\Commons.pdb
+C:\Users\justa\Desktop\Personal Projects\POS\PSP\Commons\obj\Debug\net6.0\ref\Commons.dll
