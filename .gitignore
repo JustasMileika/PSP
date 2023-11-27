@@ -396,3 +396,20 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/CheckoutService/bin/Debug/net6.0/CheckoutService.dll
+/.vs/PSP/FileContentIndex/37cdb87d-eb54-408c-94e9-79c7403d3c88.vsidx
+/.vs/PSP/FileContentIndex/5438ce65-a68f-4423-bdfb-7188d50ffc93.vsidx
+/.vs/PSP/FileContentIndex/82494152-d4a8-4d68-849a-cba643d73753.vsidx
+/.vs/PSP/FileContentIndex/ac889d82-4aa1-4c0e-a84f-89111d58f57a.vsidx
+/.vs/PSP/v17/.suo
+/CheckoutService/bin/Debug/net6.0/CheckoutService.exe
+/CheckoutService/bin/Debug/net6.0/CheckoutService.pdb
+/CheckoutService/bin/Debug/net6.0/Commons.dll
+/CheckoutService/bin/Debug/net6.0/Commons.pdb
+/CheckoutService/obj/Debug/net6.0/apphost.exe
+/CheckoutService/obj/Debug/net6.0/CheckoutService.assets.cache
+/CheckoutService/obj/Debug/net6.0/CheckoutService.csproj.AssemblyReference.cache
+/Commons/bin/Debug/net6.0/Commons.pdb
+/Commons/bin/Debug/net6.0/Commons.dll
+/CustomerService/obj/Debug/net6.0/ref/CustomerService.dll
+/CustomerService/obj/Debug/net6.0/refint/CustomerService.dll

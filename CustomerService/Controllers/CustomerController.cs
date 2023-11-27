@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerService.Controllers
 {
-    [Route("api/product")]
+    [Route("api/customer")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
