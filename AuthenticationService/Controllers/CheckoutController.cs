@@ -7,7 +7,7 @@ namespace AuthenticationService.Controllers
     public class CheckoutController : ControllerBase
     {
         [HttpPost("login")]
-        public string Login([FromBody] string email, [FromBody] string password)
+        public string Login(string email, string password)
         {
             return "";
         }
