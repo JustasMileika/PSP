@@ -14,7 +14,13 @@ namespace OrderService.Controllers
         }
 
         [HttpGet("{id}")]
-        public Order Get(int id)
+        public Order Get(Guid id)
+        {
+            return new Order();
+        }
+
+        [HttpGet("{customerId}")]
+        public Order GetCustomerOrders(Guid customerId)
         {
             return new Order();
         }
@@ -26,13 +32,13 @@ namespace OrderService.Controllers
         }
 
         [HttpPut("{id}")]
-        public Order UpdateStatus(int id, [FromBody] OrderStatus orderStatus)
+        public Order UpdateStatus(Guid id, [FromBody] OrderStatus orderStatus)
         {
             return new Order();
         }
 
         [HttpDelete("{id}")]
-        public Order Delete(int id)
+        public Order Delete(Guid id)
         {
             return new Order();
         }
