@@ -1,0 +1,1969 @@
+openapi: 3.0.1
+info:
+  title: PoS
+  version: '1.0'
+paths:
+  /api/auth/login:
+    post:
+      tags:
+        - Authentication
+      description: Logs in an user.
+      summary: Log in an user.
+      parameters:
+        - name: email
+          in: query
+          required: true
+          description: Email of an user.
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: true
+          description: Password of an user.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/auth/register:
+    post:
+      tags:
+        - Authentication
+      description: Registers an user.
+      summary: Registers an user.
+      parameters:
+        - name: email
+          in: query
+          required: true
+          description: Email of an user.
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: true
+          description: Password of an user.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/customer:
+    get:
+      tags:
+        - Customer
+      description: Use this method to get all the customers.
+      summary: Get all customers.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    post:
+      tags:
+        - Customer
+      description: Use this method to add new customer.
+      summary: Create a user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/customer/{customerId}:
+    get:
+      tags:
+        - Customer
+      description: Use this method to get specific customer by it's id.
+      summary: Get a customer.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: Id of the customer.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    put:
+      tags:
+        - Customer
+      description: Use this method to update customer's information.
+      summary: Edit a customer.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: Id of the customer.
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    delete:
+      tags:
+        - Customer
+      description: Use this method to delete specific customer.
+      summary: Delete a customer.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: Id of the customer.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/customer/{customerId}/{reservationId}:
+    put:
+      tags:
+        - Customer
+      description: Use this method to add reservation to the customer.
+      summary: Add a reservation for the customer.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: Id of the customer.
+          schema:
+            type: string
+            format: uuid
+        - name: reservationId
+          in: path
+          required: true
+          description: Id of the reservation.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/customer/{customerId}/{orderId}:
+    put:
+      tags:
+        - Customer
+      description: Use this method to add order to the customer.
+      summary: Add a order for the customer.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: Id of the customer.
+          schema:
+            type: string
+            format: uuid
+        - name: orderId
+          in: path
+          required: true
+          description: Id of the order.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/discount:
+    get:
+      tags:
+        - Discount
+      description: Use this method to get all the discounts.
+      summary: Get all discounts.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Discount'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Discount'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Discount'
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    post:
+      tags:
+        - Discount
+      description: Use this method to create a new discount.
+      summary: Create a discount.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/discount/{discountId}:
+    get:
+      tags:
+        - Discount
+      description: Use this method to get a specific discount object.
+      summary: Get a discount.
+      parameters:
+        - name: id
+          in: path
+          description: Id of the discount.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    put:
+      tags:
+        - Discount
+      description: Use this method to update specific discount object.
+      summary: Edit a discount.
+      parameters:
+        - name: discountId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Discount'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    delete:
+      tags:
+        - Discount
+      description: Use this method to delete specific discount object.
+      summary: Delete a discount.
+      parameters:
+        - name: discountId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/discount/{productId}:
+    get:
+      tags:
+        - Discount
+      description: Use this method to get all discounts for a specific product.
+      summary: Get all product discounts.
+      parameters:
+        - name: productId
+          in: path
+          description: Id of the product.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Discount'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/employee:
+    post:
+      tags:
+        - Employee
+      description: Use this method to create an employee.
+      summary: Create an employee.
+      parameters:
+        - name: EmployeeId
+          in: query
+          description: Id of the employee.
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: FirstName
+          in: query
+          description: First name of the employee.
+          required: true
+          schema:
+            type: string
+        - name: LastName
+          in: query
+          description: Last name of the employee.
+          required: true
+          schema:
+            type: string
+        - name: Role
+          in: query
+          description: Role of the employee.
+          required: true
+          schema:
+            type: string
+        - name: Email
+          in: query
+          description: Email of the employee.
+          required: true
+          schema:
+            type: string
+        - name: Phone
+          in: query
+          description: Phone number of the employee.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Employee'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    get:
+      tags:
+        - Employee
+      description: Use this method to get all the employees.
+      summary: Get all employes.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/employee/{employeeId}:
+    get:
+      tags:
+        - Employee
+      description: Use this method to get details about specific employee.
+      summary: Get A employee.
+      parameters:
+        - name: EmployeeId
+          in: path
+          required: true
+          description: Id of the specific employee.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Employee'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    put:
+      tags:
+        - Employee
+      description: Use this method to edit specific employee.
+      summary: Edit and employee.
+      parameters:
+        - name: EmployeeId
+          in: path
+          required: true
+          description: Id of the specific employee.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Employee'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+    delete:
+      tags:
+        - Employee
+      description: Use this method to delete information about specific employee.
+      summary: Delete an employee.
+      parameters:
+        - name: EmployeeId
+          in: path
+          required: true
+          description: Id of the specific employee.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/giftcard:
+    post:
+      tags:
+        - GiftCard
+      description: Use this method to create the gift card.
+      summary: Create a giftcard.
+      parameters:
+        - name: GiftCardId
+          in: query
+          description: Id of the gift card.
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: RemainingValue
+          in: query
+          description: Value of the gift card.
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: CreationDate
+          in: query
+          description: When gift card was created.
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: ValidUntilDate
+          in: query
+          description: Time until gift card is valid.
+          required: true
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/giftcard/{giftCardId}:
+    get:
+      tags:
+        - GiftCard
+      description: Use this method to get specific gift card. 
+      summary: Get a giftcard.
+      parameters:
+        - name: giftCardId
+          in: path
+          required: true
+          description: Id of the gift card.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    put:
+      tags:
+        - GiftCard
+      description: Use this method to update specific gift card.
+      summary: Edit a giftcard.
+      parameters:
+        - name: giftCardId
+          in: path
+          required: true
+          description: Id of the gift card.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GiftCard'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    delete:
+      tags:
+        - GiftCard
+      description: Use this method to delete a specific gift card.
+      summary: Delete a giftcard.
+      parameters:
+        - name: giftCardId
+          in: path
+          required: true
+          description: Id of the gift card.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/inventory:
+    get:
+      tags:
+        - Inventory
+      description: Use this method to get all the inventory entities.
+      summary: Get all inventory entities.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Inventory'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Inventory'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Inventory'
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    post:
+      tags:
+        - Inventory
+      description: Use this method to create a new inventory entity.
+      summary: Create an inventory entity.
+      parameters:
+        - name: InventoryId
+          in: query
+          description: Id of an inventory.
+          schema:
+            type: string
+            format: uuid
+        - name: OfferingId
+          in: query
+          description: Id of an offering.
+          schema:
+            type: string
+            format: uuid
+        - name: CurrentStock
+          in: query
+          description: Current stock of offerings.
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/inventory/{inventoryId}:
+    get:
+      tags:
+        - Inventory
+      description: Use this method to get a specific inventory entity.
+      summary: Get an inventory.
+      parameters:
+        - name: inventoryId
+          in: path
+          required: true
+          description: Id of an inventory.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    put:
+      tags:
+        - Inventory
+      description: Use this method to edit a specific inventory entity.
+      summary: Update an inventory.
+      parameters:
+        - name: inventoryId
+          in: path
+          required: true
+          description: Id of an inventory.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    delete:
+      tags:
+        - Inventory
+      description: Use this method to delete a specific inventory entity.
+      summary: Delete an inventory.
+      parameters:
+        - name: inventoryId
+          in: path
+          required: true
+          description: Id of an inventory.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/notification/orderPayed:
+    post:
+      tags:
+        - Notification
+      description: Use this method to send a notification that order is payed.
+      summary: Notice listeners that order is payed.
+      responses:
+        '200':
+          description: Success
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/notification/orderCompleted:
+    post:
+      tags:
+        - Notification
+      description: Use this method to send a notification that order is completed.
+      summary: Notice listeners that order is completed.
+      responses:
+        '200':
+          description: Success
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/notification/orderPrepared:
+    post:
+      tags:
+        - Notification
+      description: Use this method to send a notification that order is prepared.
+      summary: Notice listeners that order is prepared.
+      responses:
+        '200':
+          description: Success
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/offering:
+    get:
+      tags:
+        - Offering
+      description: Use this method to get all offerings.
+      summary: Get all offerings.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Offering'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Offering'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Offering'
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    post:
+      tags:
+        - Offering
+      description: Use this method to create a new offering.
+      summary: Create new offering.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Offering'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Offering'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Offering'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/offering/{offeringId}:
+    get:
+      tags:
+        - Offering
+      description: Use this method to get a specific offering.
+      summary: Get an offering.
+      parameters:
+        - name: OfferingId
+          in: path
+          required: true
+          description: Id of an offering
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    put:
+      tags:
+        - Offering
+      description: Use this method to edit a specific offering.
+      summary: Edit an offering.
+      parameters:
+        - name: OfferingId
+          in: path
+          required: true
+          description: Id of an offering.
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Offering'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Offering'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Offering'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    delete:
+      tags:
+        - Offering
+      description: Use this method to delete a specific offering.
+      summary: Delete an offering.
+      parameters:
+        - name: OfferingId
+          in: path
+          required: true
+          description: Id of an offering.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/offering/{offeringId}/{discountId}:
+    put:
+      tags:
+        - Offering
+      description: Use this method to apply discount to an offering.
+      summary: Add a discount to an offering.
+      parameters:
+        - name: OfferingId
+          in: path
+          required: true
+          description: Id of an offering.
+          schema:
+            type: string
+            format: uuid
+        - name: DiscountId
+          in: path
+          required: true
+          description: Id of a discount.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/offering/{offeringId}/{taxId}:
+    put:
+      tags:
+        - Offering
+      description: Use this method to apply tax to an offering.
+      summary: Apply tax to an offering.
+      parameters:
+        - name: OfferingId
+          in: path
+          required: true
+          description: Id of an offer.
+          schema:
+            type: string
+            format: uuid
+        - name: taxId
+          in: path
+          required: true
+          description: If of a tax.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Offering'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/order:
+    get:
+      tags:
+        - Order
+      description: Use this method to get all orders.
+      summary: Get all orders.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    post:
+      tags:
+        - Order
+      description: Use this method to create a new order.
+      summary: Create an order.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/order/{orderId}:
+    get:
+      tags:
+        - Order
+      description: Use this method to get a specific order.
+      summary: Get an order.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Id of an order.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    put:
+      tags:
+        - Order
+      description: Use this method to edit a specific order.
+      summary: Edit an order.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Id of an order.
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderStatus'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OrderStatus'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/OrderStatus'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    delete:
+      tags:
+        - Order
+      description: Use this method to get a specific order.
+      summary: Delete an order.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Id of an order.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/order/{orderId}/{discountId}:
+    put:
+      tags:
+        - Order
+      description: Use this method to add a discount to an order.
+      summary: Apply discount to an order.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Id of an order.
+          schema:
+            type: string
+            format: uuid
+        - name: discountId
+          in: path
+          required: true
+          description: If of a discount.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/order/{orderId}/{employeeId}:
+    put:
+      tags:
+        - Order
+      description: Use this method to add employee to an order.
+      summary: Add an employee to an order.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Id of an order.
+          schema:
+            type: string
+            format: uuid
+        - name: employeeId
+          in: path
+          required: true
+          description: If of an employee.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/order/{orderId}/{paymentId}:
+    put:
+      tags:
+        - Order
+      description: Use this method to add payement to an order.
+      summary: Add a payment to an order.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Id of an order.
+          schema:
+            type: string
+            format: uuid
+        - name: paymentId
+          in: path
+          required: true
+          description: Id of a payement.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Order'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+  /api/payment/{payementId}:
+    post:
+      tags:
+        - Payment
+      description: Use this method to create a payement.
+      summary: Create a payement.
+      parameters:
+        - name: payementId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Id of the payement.
+        - name: amount
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+          description: How much does the order cost
+        - name: paymentType
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/PaymentType'
+          description: Payement type
+        - name: giftCards,
+          in: query
+          schema:
+            type: array
+            items:
+                $ref: '#/components/schemas/GiftCard'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Payment'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+    get:
+      tags:
+        - Payment
+      description: Use this method to get a payement.
+      summary: Get payement.
+      parameters:
+        - name: payementId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: id of the payement.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Payment'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+
+    delete:
+      tags:
+        - Payment
+      description: Use this method to delete a payement.
+      summary: Delete payment.
+      parameters:
+        - name: payementId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: id of the payement.
+      responses:
+        '200':
+          description: Success
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError" 
+  /api/payment/{payementId}/{giftCardId}:
+    put:
+      tags:
+        - Payment
+      description: Use this method to apply gift cards to the payement.
+      summary: Add gift card.
+      parameters:
+        - name: payementId
+          in: path
+          required: true
+          description: Id of the payement.
+          schema:
+            type: string
+            format: uuid
+        - name: giftCardId
+          in: path
+          required: true
+          description: Id of the gift card.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Payment'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '422':
+          $ref: "#/components/schemas/Responses/UnprocessableContentError"
+        '500':
+          $ref: "#/components/schemas/Responses/InternalServerError"
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        customerId:
+          type: string
+          format: uuid
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        loyaltyProgram:
+          $ref: '#/components/schemas/LoyaltyPoints'
+      additionalProperties: false
+    Discount:
+      type: object
+      properties:
+        discountId:
+          type: string
+          format: uuid
+        description:
+          type: string
+          nullable: true
+        discountInAmount:
+          type: integer
+          format: int32
+        discountInPercentage:
+          type: integer
+          format: int32
+        validatyStartDate:
+          type: string
+          format: date-time
+        validatyEndDate:
+          type: string
+          format: date-time
+        offeringId:
+          type: string
+          format: uuid
+        minQuantity:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Employee:
+      type: object
+      properties:
+        employeeId:
+          type: string
+          format: uuid
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GiftCard:
+      type: object
+      properties:
+        giftCardId:
+          type: string
+          format: uuid
+        remainingValue:
+          type: integer
+          format: int32
+        creationDate:
+          type: string
+          format: date-time
+        validUntilDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Inventory:
+      type: object
+      properties:
+        inventoryId:
+          type: string
+          format: uuid
+        offeringId:
+          type: string
+          format: uuid
+        currentStock:
+          type: integer
+          format: int32
+      additionalProperties: false
+    LoyaltyPoints:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pointsEarned:
+          type: number
+          format: double
+        pointsRedeemed:
+          type: number
+          format: double
+      additionalProperties: false
+    Offering:
+      type: object
+      properties:
+        offeringId:
+          type: string
+          format: uuid
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        price:
+          type: integer
+          format: int32
+        loyaltyReward:
+          $ref: '#/components/schemas/LoyaltyPoints'
+      additionalProperties: false
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: string
+          format: uuid
+        customerId:
+          type: string
+          format: uuid
+        createdDate:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+        tipAmount:
+          type: integer
+          format: int32
+        feedback:
+          type: string
+          nullable: true
+        orderItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDetails'
+          nullable: true
+      additionalProperties: false
+    OrderDetails:
+      type: object
+      properties:
+        orderId:
+          type: string
+          format: uuid
+        offeringId:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          format: int32
+      additionalProperties: false
+    OrderItem:
+      type: object
+      properties:
+        productId:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          format: int32
+      additionalProperties: false
+    OrderStatus:
+      enum:
+        - 0
+        - 1
+        - 2
+      type: integer
+      format: int32
+    Payment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderId:
+          type: string
+          format: uuid
+        createdDate:
+          type: string
+          format: date-time
+        paymentType:
+          $ref: '#/components/schemas/PaymentType'
+        amount:
+          type: integer
+          format: int32
+        giftCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/GiftCard'
+          nullable: true
+      additionalProperties: false
+    PaymentType:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+      type: integer
+      format: int32
+    Price:
+      type: object
+      additionalProperties: false
+
+    
+    Reservation:
+      type: object
+      properties:
+        reservationId:
+          type: string
+          format: uuid
+        rservationDate:
+          type: string
+          format: date-time
+        duration:
+          $ref: '#/components/schemas/TimeSpan'
+        customerId:
+          type: string
+          format: uuid
+        spot:
+          $ref: '#/components/schemas/Spot'
+      additionalProperties: false
+    Responses:
+      InternalServerError:
+        description: Server error. This should happen rarely.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timestamp:
+                  type: string
+                  format: date-time
+                trace_id:
+                  type: string
+                  format: uuid
+                errorMessage:
+                  type: string
+                  format: string
+
+      UnprocessableContentError:
+        description: Client error. Server understood the parameters, but some of them were incorrect (have you provided an incorrect id?).
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timestamp:
+                  type: string
+                  format: date-time
+                trace_id:
+                  type: string
+                  format: uuid
+                errorMessage:
+                  type: string
+                  format: string
+    Spot:
+      type: object
+      properties:
+        spotId:
+          type: string
+          format: uuid
+        name:
+          type: string
+          nullable: true
+        capacity:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Stock:
+      type: object
+      additionalProperties: false
+    Tax:
+      type: object
+      properties:
+        taxId:
+          type: string
+          format: uuid
+        taxName:
+          type: string
+          nullable: true
+        taxPercentage:
+          type: integer
+          format: int32
+      additionalProperties: false
+
+    TimeSpan:
+      type: object
+      properties:
+        ticks:
+          type: integer
+          format: int64
+        days:
+          type: integer
+          format: int32
+        hours:
+          type: integer
+          format: int32
+        milliseconds:
+          type: integer
+          format: int32
+        minutes:
+          type: integer
+          format: int32
+        seconds:
+          type: integer
+          format: int32
+        totalDays:
+          type: number
+          format: double
+          readOnly: true
+        totalHours:
+          type: number
+          format: double
+          readOnly: true
+        totalMilliseconds:
+          type: number
+          format: double
+          readOnly: true
+        totalMinutes:
+          type: number
+          format: double
+          readOnly: true
+        totalSeconds:
+          type: number
+          format: double
+          readOnly: true
+      additionalProperties: false
+      
