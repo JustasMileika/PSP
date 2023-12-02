@@ -1,4 +1,4 @@
-﻿namespace ProductService.Model
+﻿namespace OfferingService.Model
 {
     public class Stock
     {

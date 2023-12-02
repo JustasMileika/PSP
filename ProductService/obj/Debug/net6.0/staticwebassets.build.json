@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "j0c9bMJ5jsqzhPF5VFHs62krbDGMkhcqON2bGvkb1pg=",
-  "Source": "ProductService",
-  "BasePath": "_content/ProductService",
+  "Hash": "tvvsQjYqz/xNJoaBOGRcjjn6O/9EKLRmqHOoVjok9yM=",
+  "Source": "OfferingService",
+  "BasePath": "_content/OfferingService",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

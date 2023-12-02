@@ -13,7 +13,7 @@ namespace OrderService.Controllers
             return new Order[] {};
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{orderId}")]
         public Order Get(int id)
         {
             return new Order();
@@ -25,14 +25,31 @@ namespace OrderService.Controllers
             return new Order();
         }
 
-        [HttpPut("{id}")]
-        public Order UpdateStatus(int id, [FromBody] OrderStatus orderStatus)
+        [HttpPut("{orderId}")]
+        public Order UpdateStatus(Guid id, [FromBody] OrderStatus orderStatus)
         {
             return new Order();
         }
 
-        [HttpDelete("{id}")]
-        public Order Delete(int id)
+        [HttpPut("{OrderId}/{DiscountId}")]
+        public Order ApplyDiscountToOrder(Guid orderId, Guid discountId)
+        {
+            return new Order();
+        }
+
+        [HttpPut("{OrderId}/{EmployeeId}")]
+        public Order AddEmployeeToOrder(Guid orderId, Guid employeeId)
+        {
+            return new Order();
+        }
+
+        [HttpDelete("{orderId}")]
+        public void Delete(int id)
+        {
+        }
+
+        [HttpPut("{OrderId}/{PaymentId}")]
+        public Order PayForOrder(Guid orderId, Guid paymentId)
         {
             return new Order();
         }

@@ -8,6 +8,7 @@ namespace CheckoutService.Model
         public Guid OrderId { get; set; }
         public DateTime CreatedDate { get; set; }
         public PaymentType PaymentType { get; set; }
-        public Price Amount { get; set; }
+        public int Amount { get; set; }
+        public List<GiftCard>? GiftCards { get; set; }
     }
 }

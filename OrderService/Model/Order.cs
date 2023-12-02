@@ -4,12 +4,12 @@ namespace OrderService.Model
 {
     public class Order
     {
-        public int Id { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
-        public IEnumerable<OrderItem> OrderItems { get; set; }
+        public Guid OrderId { get; set; }
         public Guid CustomerId { get; set; }
-        public OrderStatus OrderStatus { get; set; }
-        public Price TipAmount { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public OrderStatus Status { get; set; }
+        public int TipAmount { get; set; }
+        public string Feedback { get; set; }
+        public IEnumerable<OrderDetails> OrderItems { get; set; }
     }
 }
